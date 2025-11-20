@@ -1,4 +1,4 @@
-FROM astral/uv:apline
+FROM astral/uv:alpine
 
 RUN mkdir /srv/app
 WORKDIR /srv/app
@@ -11,4 +11,4 @@ RUN uv pip install gunicorn
 
 EXPOSE 8000
 
-CMD ["uv", "run", "gunicorn", "--workses", "3", "--bind", "0.0.0.0:8000", "app:app"]
+CMD ["uv", "run", "gunicorn", "--workers", "3", "--bind", "0.0.0.0:8000", "hello:app"]
